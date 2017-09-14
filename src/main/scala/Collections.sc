@@ -114,3 +114,69 @@ seq patch (1, Seq(1,1), 2)
 seq.sorted
 seq sortWith((a,b) => a > b)
 
+// multiset methods
+seq intersect Seq(8, 9)
+
+seq ++ Seq(11, 12)
+seq union Seq(11, 12)
+
+Seq(2,3,2,4,2).distinct
+
+/** On to Sets next. Sets are iterables that don't contain duplicates
+  */
+
+// Test methods
+val set = Set(1,2,3,4,5)
+set.contains(4)
+set(2) // same as contains
+
+// addition and removal methods
+set + 10
+set ++ Seq(10,100)
+
+set - 5
+set -- List(1,2)
+
+// set operations
+set intersect Set(1,2)
+set & Set(1,2)
+
+set union Set(6)
+set | Set(6)
+
+set diff Set(1,2)
+set &~ Set(1,2)
+
+// mutable sets offer the more efficient:
+val mSet = scala.collection.mutable.Set(1,2,3)
+mSet += 4
+mSet -= 1
+
+/** Maps are Iterables containing key-value pairs
+  */
+val map = Map("a" -> 1, "b" -> 2) // same as Map(("a",1), ("b",2))
+
+// Operations are similar to those for sets.
+
+// subcollection methods:
+map.keys  // returns an iterable
+map.keySet // returns a set
+
+map.values
+
+// transformation methods:
+map.filterKeys(_ == "a")
+map.mapValues(x => x * x)
+
+// Mutable Maps support updates:
+val mMap = scala.collection.mutable.Map("a" -> 1, "b" -> 2)
+mMap += ("c" -> 3)
+mMap += ("d" -> 4, "e" -> 5)
+
+/** Arrays are a special kind of collection in Scala. They are mutable!
+  * They correspond 1-to-1 to Java arrays, but they are generic and
+  * compatible with Seq[T]
+  */
+val arr = Array(1,2,3,4,5)
+arr(1) = 20
+arr
